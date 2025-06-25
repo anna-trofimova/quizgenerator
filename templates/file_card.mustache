@@ -1,0 +1,55 @@
+<div class="card mb-3 shadow-sm">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <button class="btn btn-link text-left p-0 m-0" type="button" data-toggle="collapse" data-target="#file{{itemid}}">
+      {{filename}}
+    </button>
+    <div class="text-right">
+      <form method="post" action="{{url}}" class="d-inline form-inline" style="display: inline-flex; gap: 0.5em;">
+        <input type="hidden" name="itemid" value="{{itemid}}">
+
+        <select name="num_questions" class="form-control form-control-sm">
+          <option value="1" selected>1 pregunta</option>
+          <option value="2">2 preguntas</option>
+          <option value="3">3 preguntas</option>
+          <option value="4">4 preguntas</option>
+          <option value="5">5 preguntas</option>
+        </select>
+
+        <select name="question_type" class="form-control form-control-sm">
+          <option value="multiple_choice">Opción múltiple</option>
+          <option value="true_false">Verdadero / Falso</option>
+        </select>
+
+        <input type="submit" name="generate" value="Generar preguntas con IA" class="btn btn-sm btn-primary">
+      </form>
+
+
+      <!-- Eliminar archivo PDF -->
+      <form method="post" action="{{url}}" class="d-inline">
+        <input type="hidden" name="itemid" value="{{itemid}}">
+        <input type="submit" name="delete" value="Eliminar" class="btn btn-sm btn-danger">
+      </form>
+
+      <!-- Eliminar las preguntas generadas -->
+      <form method="post" action="{{url}}" class="d-inline">
+        <input type="hidden" name="itemid" value="{{itemid}}">
+        <input type="hidden" name="filename" value="{{filename}}">
+        <input type="submit" name="delete_questions" value="Eliminar preguntas" class="btn btn-sm btn-warning">
+      </form>
+    </div>
+  </div>
+
+  <div class="collapse" id="file{{itemid}}">
+    <div class="card-body">
+      <strong>Texto extraído:</strong>
+      <pre style="max-height: 200px; overflow-y: auto; background-color: #f9f9f9;">{{{excerpt}}}</pre>
+
+      {{#questions}}
+        <strong>Preguntas generadas:</strong>
+        <pre style="white-space: pre-wrap; background-color: #e9f5ff; padding: 1em; border: 1px solid #007bff;">
+{{{.}}}
+        </pre>
+      {{/questions}}
+    </div>
+  </div>
+</div>

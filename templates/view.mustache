@@ -1,0 +1,28 @@
+<!-- Botón para mostrar/ocultar formulario -->
+<button class="btn btn-outline-primary mb-3" data-toggle="collapse" data-target="#uploadForm" aria-expanded="false">
+  Subir PDF
+</button>
+
+<div class="collapse mb-4" id="uploadForm">
+  {{{uploadform}}}
+</div>
+
+<!-- Mostrar mensajes -->
+{{#successmessage}}
+  <div class="alert alert-success">{{successmessage}}</div>
+{{/successmessage}}
+
+{{#errormessage}}
+  <div class="alert alert-danger">{{errormessage}}</div>
+{{/errormessage}}
+
+<!-- Lista de archivos -->
+{{#files}}
+  {{> local_quizgenerator/file_card }}
+{{/files}}
+
+{{^files}}
+  <p class="text-muted">No has subido ningún archivo todavía.</p>
+{{/files}}
+
+<a href="{{{viewquestionsurl}}}" class="btn btn-secondary">Ver preguntas generadas</a>
