@@ -31,7 +31,7 @@ function call_openai_api($prompt, $apiKey) {
 
 
 function generate_multiple_choice_questions($inputText, $numQuestions = 3) {
-    $apiKey = "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";
+    $apiKey = "_API_";
 
     $prompt = "Lee el siguiente texto y genera EXACTAMENTE $numQuestions preguntas tipo test con 4 opciones (a, b, c, d), en español. Usa este formato:
 
@@ -58,8 +58,7 @@ NO EXPLIQUES NADA.
 }
 
 function generate_true_false_questions($inputText, $numQuestions = 3) {
-    $apiKey = "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";
-
+    $apiKey = "_API_";
     $prompt = "Lee el siguiente texto y genera EXACTAMENTE $numQuestions preguntas de tipo Verdadero o Falso en español. Usa este formato:
 
 Pregunta 1: [enunciado]
